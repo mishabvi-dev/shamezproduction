@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shamez Production — Photography & Videography</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #080808;
+      --charcoal: #141414;
+      --panel: #1c1c1c;
+      --gold: #C8971E;
+      --gold-light: #E2B44B;
+      --gold-dim: #7a5c10;
+      --white: #F5F0E8;
+      --muted: #8a8278;
+      --border: rgba(200,151,30,0.2);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 56px;
+      background: linear-gradient(to bottom, rgba(8,8,8,0.95) 0%, transparent 100%);
+      transition: background 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(8,8,8,0.97);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      text-decoration: none;
+    }
+    .nav-logo h2 {
+      font-family: 'Cormorant Garant', serif;
+      color: var(--gold);
+      margin: 0;
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      line-height: 1;
+    }
+    .nav-logo span {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+    }
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-ig {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      padding: 9px 18px;
+      transition: all 0.3s;
+    }
+    .nav-ig:hover {
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
+    }
+    .nav-ig svg { width: 15px; height: 15px; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 50%, rgba(200,151,30,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 80% at 20% 80%, rgba(200,151,30,0.04) 0%, transparent 50%),
+        linear-gradient(175deg, #0e0c09 0%, #080808 50%, #0a0807 100%);
+    }
+    /* Film grain overlay */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 1.2s ease both;
+    }
+    .hero-logo {
+      font-family: 'Cormorant Garant', serif;
+      color: var(--gold);
+      margin: 0 0 36px 0;
+      font-size: 48px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      animation: fadeUp 1s 0.2s ease both;
+    }
+    .hero-logo span {
+      font-size: 20px;
+      letter-spacing: 0.3em;
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+    }
+    .hero-tagline {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(38px, 5vw, 68px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      animation: fadeUp 1s 0.4s ease both;
+    }
+    .hero-tagline em {
+      color: var(--gold);
+      font-style: normal;
+    }
+    .hero-sub {
+      margin-top: 18px;
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      color: var(--muted);
+      text-transform: uppercase;
+      animation: fadeUp 1s 0.6s ease both;
+    }
+    .hero-cta {
+      margin-top: 48px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      animation: fadeUp 1s 0.8s ease both;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      padding: 14px 36px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,151,30,0.3); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(245,240,232,0.25);
+      padding: 14px 36px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-whatsapp {
+      background: transparent;
+      color: #25D366;
+      border: 1px solid rgba(37,211,102,0.5);
+      padding: 14px 36px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-whatsapp:hover { background: #25D366; color: var(--black); border-color: #25D366; box-shadow: 0 8px 30px rgba(37,211,102,0.3); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      animation: fadeUp 1s 1.2s ease both;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 100px 56px; }
+    .section-eyebrow {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(32px, 4vw, 54px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--white);
+    }
+    .gold-rule {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 28px 0;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: var(--charcoal);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-frame {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, #1a1510 0%, #0f0d0a 100%);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      background-image: url('assets/WhatsApp Image 2026-06-24 at 8.16.20 PM.jpeg');
+      background-size: cover;
+      background-position: center;
+    }
+    .about-frame::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: -1px; right: -1px; bottom: -1px;
+      border: 1px solid var(--border);
+      transform: translate(12px, 12px);
+    }
+    .about-frame-inner {
+      position: absolute;
+      inset: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      background: rgba(0,0,0,0.5);
+    }
+    .about-frame h3 {
+      font-family: 'Cormorant Garant', serif;
+      color: var(--gold);
+      margin: 0;
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      text-align: center;
+    }
+    .about-frame span.title-sub {
+      font-size: 14px;
+      letter-spacing: 0.3em;
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+    }
+    .about-frame-label {
+      font-size: 9px;
+      letter-spacing: 0.4em;
+      color: var(--gold-dim);
+      text-transform: uppercase;
+    }
+    /* Cinematic corner marks */
+    .about-frame::after {
+      content: '';
+      position: absolute;
+      top: 16px; left: 16px;
+      width: 24px; height: 24px;
+      border-top: 1px solid var(--gold);
+      border-left: 1px solid var(--gold);
+    }
+    .corner-br {
+      position: absolute;
+      bottom: 16px; right: 16px;
+      width: 24px; height: 24px;
+      border-bottom: 1px solid var(--gold);
+      border-right: 1px solid var(--gold);
+    }
+    .about-text p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+    .stat-num {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 42px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      background: var(--black);
+      text-align: center;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 60px;
+    }
+    .service-card {
+      position: relative;
+      padding: 52px 36px;
+      background: var(--charcoal);
+      border: 1px solid transparent;
+      transition: all 0.4s;
+      text-align: left;
+      cursor: default;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--gold);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .service-card:hover { background: #1e1a12; }
+    .service-card:hover::before { opacity: 1; }
+    .service-card:hover .service-icon { color: var(--gold-light); }
+    .service-icon {
+      font-size: 36px;
+      color: var(--gold);
+      margin-bottom: 24px;
+      display: block;
+      transition: color 0.3s;
+    }
+    .service-name {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+    .service-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .service-num {
+      position: absolute;
+      top: 24px; right: 28px;
+      font-family: 'Cormorant Garant', serif;
+      font-size: 56px;
+      font-weight: 300;
+      color: rgba(200,151,30,0.08);
+      line-height: 1;
+    }
+
+    /* ── PORTFOLIO GALLERY ── */
+    .portfolio {
+      background: var(--charcoal);
+    }
+    .portfolio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 52px;
+    }
+    .portfolio-filter {
+      display: flex;
+      gap: 8px;
+    }
+    .filter-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 8px 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
+    }
+    /* Masonry-style gallery */
+    .gallery-grid {
+      columns: 3;
+      column-gap: 12px;
+    }
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 12px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-item:hover img, .gallery-item:hover video { transform: scale(1.05); transition: transform 0.4s; }
+    .gallery-item img, .gallery-item video {
+      width: 100%;
+      display: block;
+      transition: transform 0.4s;
+    }
+    .gallery-label {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--white);
+    }
+    .gallery-cat {
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* ── CATEGORIES ── */
+    .categories {
+      background: var(--black);
+    }
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 60px;
+    }
+    .cat-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      cursor: pointer;
+    }
+    .cat-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+      background-size: cover;
+      background-position: center;
+    }
+    .cat-card:hover .cat-bg { transform: scale(1.05); }
+    .cat-bg-1 { background-image: url('assets/WhatsApp Image 2026-06-24 at 8.16.21 PM.jpeg'); }
+    .cat-bg-2 { background-image: url('assets/WhatsApp Image 2026-06-24 at 8.16.22 PM.jpeg'); }
+    .cat-bg-3 { background-image: url('assets/WhatsApp Image 2026-06-24 at 8.16.24 PM.jpeg'); }
+    .cat-bg-4 { background-image: url('assets/WhatsApp Image 2026-06-24 at 8.16.25 PM.jpeg'); }
+    
+    .cat-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.4) 60%, transparent 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 40px;
+      border: 1px solid transparent;
+      transition: border-color 0.4s;
+    }
+    .cat-card:hover .cat-overlay { border-color: var(--border); }
+    .cat-inner { position: relative; }
+    .cat-name {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 30px;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .cat-count {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .cat-arrow {
+      display: inline-block;
+      color: var(--gold);
+      font-size: 20px;
+      transform: translateX(0);
+      transition: transform 0.3s;
+    }
+    .cat-card:hover .cat-arrow { transform: translateX(8px); }
+
+    /* ── PROCESS ── */
+    .process {
+      background: var(--charcoal);
+      text-align: center;
+    }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 70px;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dim), var(--gold), var(--gold-dim), transparent);
+    }
+    .process-step {
+      padding: 0 24px;
+    }
+    .step-dot {
+      width: 56px;
+      height: 56px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      background: var(--black);
+      position: relative;
+      z-index: 1;
+      font-family: 'Cormorant Garant', serif;
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--gold);
+      transition: all 0.3s;
+    }
+    .process-step:hover .step-dot {
+      background: var(--gold);
+      color: var(--black);
+    }
+    .step-title {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .step-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── TESTIMONIAL ── */
+    .testimonial {
+      background: var(--black);
+      text-align: center;
+      padding: 120px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    .testimonial::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Cormorant Garant', serif;
+      font-size: 280px;
+      color: rgba(200,151,30,0.04);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .testimonial-text {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white);
+      max-width: 820px;
+      margin: 0 auto;
+      line-height: 1.5;
+      position: relative;
+    }
+    .testimonial-author {
+      margin-top: 36px;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    /* ── CONTACT / CTA ── */
+    .contact {
+      background: linear-gradient(135deg, #100d06 0%, #0a0805 50%, #12100a 100%);
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .contact-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .contact-inner .section-title {
+      margin-bottom: 20px;
+    }
+    .contact-inner p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 44px;
+    }
+    .contact-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .social-bar {
+      margin-top: 64px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      align-items: center;
+    }
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .social-link:hover { color: var(--gold); }
+    .social-link svg { width: 18px; height: 18px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      border-top: 1px solid var(--border);
+      padding: 40px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo {
+      text-decoration: none;
+    }
+    .footer-logo h2 {
+      font-family: 'Cormorant Garant', serif;
+      color: var(--gold);
+      margin: 0;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      line-height: 1;
+    }
+    .footer-logo span {
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+    }
+    .footer-copy {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { transform: scaleY(1); opacity: 1; }
+      50% { transform: scaleY(0.6); opacity: 0.4; }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 18px 24px; }
+      .nav-links { display: none; }
+      section { padding: 72px 24px; }
+      .about { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-grid { columns: 2; }
+      .cat-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+      .process-steps::before { display: none; }
+      footer { flex-direction: column; gap: 20px; text-align: center; }
+      .about-stats { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .gallery-grid { columns: 1; }
+      .about-stats { grid-template-columns: repeat(3, 1fr); }
+      .hero-cta { flex-direction: column; align-items: center; }
+      .process-steps { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <h2>SHAMEZ<br><span class="title-sub">PRODUCTION</span></h2>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://www.instagram.com/shamezproduction?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" class="nav-ig">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    @shamezproduction
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h2 class="hero-logo">SHAMEZ<br><span class="title-sub">PRODUCTION</span></h2>
+    <h1 class="hero-tagline">
+      Every Frame Tells<br>a <em>Story</em>
+    </h1>
+    <p class="hero-sub">Photography &amp; Videography — Kerala</p>
+    <div class="hero-cta">
+      <a href="#portfolio" class="btn-gold">View Portfolio</a>
+      <a href="#contact" class="btn-outline">Book a Session</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-visual reveal">
+    <div class="about-frame">
+      <div class="about-frame-inner">
+        <h3>SHAMEZ<br><span class="title-sub">PRODUCTION</span></h3>
+        <span class="about-frame-label">Est. Thrissur, Kerala</span>
+      </div>
+      <div class="corner-br"></div>
+    </div>
+  </div>
+  <div class="about-text reveal">
+    <span class="section-eyebrow">About Us</span>
+    <h2 class="section-title">Crafting Visual<br>Memories That Last</h2>
+    <div class="gold-rule"></div>
+    <p>At Shamez Production, we believe every moment has a soul — our lens captures it. Based in Thrissur, Kerala, we bring cinematic storytelling to weddings, portraits, events, and commercial projects across India.</p>
+    <p>With a passion for light, emotion, and authenticity, our team transforms fleeting instants into timeless art. From intimate portraits to grand celebrations, we approach every project with the same dedication and artistic vision.</p>
+    <div class="about-stats">
+      <div>
+        <div class="stat-num">500<span style="font-size:22px;color:var(--gold-light)">+</span></div>
+        <div class="stat-label">Projects</div>
+      </div>
+      <div>
+        <div class="stat-num">8<span style="font-size:22px;color:var(--gold-light)">+</span></div>
+        <div class="stat-label">Years</div>
+      </div>
+      <div>
+        <div class="stat-num">100<span style="font-size:22px;color:var(--gold-light)">%</span></div>
+        <div class="stat-label">Satisfaction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="reveal">
+    <span class="section-eyebrow">What We Do</span>
+    <h2 class="section-title">Services</h2>
+  </div>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <span class="service-num">01</span>
+      <span class="service-icon">📷</span>
+      <div class="service-name">Photography</div>
+      <p class="service-desc">From weddings to portraits, fashion to editorial — we capture the essence of every moment with masterful composition and lighting.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-num">02</span>
+      <span class="service-icon">🎬</span>
+      <div class="service-name">Videography</div>
+      <p class="service-desc">Cinematic video production for weddings, events, music videos, and brand stories — edited to move, inspire, and endure.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-num">03</span>
+      <span class="service-icon">🌟</span>
+      <div class="service-name">Events Coverage</div>
+      <p class="service-desc">Complete event documentation — religious ceremonies, corporate events, family functions — preserving your memories in full.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="portfolio-header reveal">
+    <div>
+      <span class="section-eyebrow">Our Work</span>
+      <h2 class="section-title">Portfolio</h2>
+    </div>
+    <div class="portfolio-filter">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">Weddings</button>
+      <button class="filter-btn">Portraits</button>
+      <button class="filter-btn">Events</button>
+    </div>
+  </div>
+
+  <div class="gallery-grid reveal" id="dynamic-gallery">
+    <!-- Gallery items will be loaded dynamically -->
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories" id="work">
+  <div class="reveal" style="text-align:center">
+    <span class="section-eyebrow">Specializations</span>
+    <h2 class="section-title">What We Capture</h2>
+  </div>
+  <div class="cat-grid reveal">
+    <div class="cat-card">
+      <div class="cat-bg cat-bg-1"></div>
+      <div class="cat-overlay">
+        <div class="cat-inner">
+          <span class="cat-count">Weddings &amp; Functions</span>
+          <div class="cat-name">Sacred<br>Celebrations</div>
+          <span class="cat-arrow">→</span>
+        </div>
+      </div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-bg cat-bg-2"></div>
+      <div class="cat-overlay">
+        <div class="cat-inner">
+          <span class="cat-count">Portraits &amp; Fashion</span>
+          <div class="cat-name">Human<br>Stories</div>
+          <span class="cat-arrow">→</span>
+        </div>
+      </div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-bg cat-bg-3"></div>
+      <div class="cat-overlay">
+        <div class="cat-inner">
+          <span class="cat-count">Films &amp; Reels</span>
+          <div class="cat-name">Cinematic<br>Narratives</div>
+          <span class="cat-arrow">→</span>
+        </div>
+      </div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-bg cat-bg-4"></div>
+      <div class="cat-overlay">
+        <div class="cat-inner">
+          <span class="cat-count">Events &amp; Corporate</span>
+          <div class="cat-name">Moments<br>Preserved</div>
+          <span class="cat-arrow">→</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="reveal">
+    <span class="section-eyebrow">How We Work</span>
+    <h2 class="section-title">Our Process</h2>
+  </div>
+  <div class="process-steps reveal">
+    <div class="process-step">
+      <div class="step-dot">1</div>
+      <div class="step-title">Consultation</div>
+      <p class="step-desc">We discuss your vision, needs, and the story you want to tell. Every great image begins with understanding.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-dot">2</div>
+      <div class="step-title">Planning</div>
+      <p class="step-desc">Locations, lighting, timing, angles — we scout and prepare to ensure perfection on the day.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-dot">3</div>
+      <div class="step-title">Capture</div>
+      <p class="step-desc">With cinematic precision and an eye for authentic emotion, we document every precious moment.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-dot">4</div>
+      <div class="step-title">Deliver</div>
+      <p class="step-desc">Carefully edited, color-graded, and delivered — memories that will be cherished for generations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial">
+  <div class="reveal">
+    <p class="testimonial-text">
+      "Shamez Production captured our wedding day beyond our wildest expectations. Every glance, every tear, every smile — preserved forever in stunning clarity. Pure artistry."
+    </p>
+    <div class="testimonial-author">— Arjun & Priya, Thrissur Wedding 2024</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner reveal">
+    <span class="section-eyebrow">Get In Touch</span>
+    <h2 class="section-title">Let's Create<br>Something Beautiful</h2>
+    <div class="gold-rule" style="margin: 28px auto;"></div>
+    <p>Ready to preserve your most precious moments? Whether it's a wedding, portrait session, event, or creative project — we'd love to hear from you.</p>
+    <div class="contact-cta">
+      <a href="https://wa.me/message/XWQD43QLY6P5G1" target="_blank" rel="noopener" class="btn-whatsapp">
+        Book via WhatsApp
+      </a>
+      <a href="https://www.instagram.com/shamezproduction?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" class="btn-gold">
+        Book via Instagram
+      </a>
+      <a href="mailto:shamezproduction@gmail.com" class="btn-outline">Send an Email</a>
+    </div>
+    <div class="social-bar">
+      <a href="https://www.instagram.com/shamezproduction?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" class="social-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        @shamezproduction
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">
+    <h2>SHAMEZ<br><span class="title-sub">PRODUCTION</span></h2>
+  </a>
+  <span class="footer-copy">© 2025 Shamez Production. All rights reserved. Thrissur, Kerala.</span>
+  <ul class="footer-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Filter buttons (visual only)
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // Dynamic Gallery Loading
+  async function loadGallery() {
+    try {
+      const res = await fetch('/api/files');
+      const files = await res.json();
+      const gallery = document.getElementById('dynamic-gallery');
+      gallery.innerHTML = '';
+      
+      files.forEach(file => {
+        const ext = file.split('.').pop().toLowerCase();
+        const isVideo = ['mp4', 'mov', 'webm'].includes(ext);
+        
+        const item = document.createElement('div');
+        item.className = 'gallery-item reveal';
+        
+        // Videos use controls and playsinline, no muted autoplay to allow volume control
+        const media = isVideo
+          ? `<video src="assets/${file}" controls playsinline style="width: 100%; display: block;"></video>`
+          : `<img src="assets/${file}" alt="Portfolio item" style="width: 100%; display: block;">`;
+          
+        const label = isVideo ? 'Videography' : 'Photography';
+          
+        item.innerHTML = `
+          ${media}
+          <div class="gallery-overlay">
+            <div><span class="gallery-cat">${label}</span><span class="gallery-label">Shamez Production</span></div>
+          </div>
+        `;
+        gallery.appendChild(item);
+        
+        // Observe new elements
+        observer.observe(item);
+      });
+    } catch (err) {
+      console.error('Failed to load gallery', err);
+    }
+  }
+  
+  loadGallery();
+</script>
+</body>
+</html>
