@@ -1115,7 +1115,7 @@
   // Dynamic Gallery Loading
   async function loadGallery() {
     try {
-      const res = await fetch('/api/files');
+      const res = await fetch('/assets.json');
       const files = await res.json();
       const gallery = document.getElementById('dynamic-gallery');
       gallery.innerHTML = '';
